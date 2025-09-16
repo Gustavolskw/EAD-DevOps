@@ -1,0 +1,25 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Executar build simples
+        run: echo "Deploy bem-sucedido 🚀"
+
+      - name: Gerar artefato
+        run: echo "Arquivo de sucesso" > resultado.txt
+
+      - name: Upload artefato
+        uses: actions/upload-artifact@v3
+        with:
+          name: resultado
+          path: resultado.txt
